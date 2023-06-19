@@ -29,7 +29,7 @@ export default function Form({ componentStyle }: FormProps) {
           height={200}
         />
         <h4 className="w-3/4 text-center mb-3">
-          Accesible, rapido y seguro, inicia la camara de tu celu y apunta hacie
+          Accesible, rapido y seguro, inicia la camara de tu celu y apunta hacia
           el QR para conectarte automaticamente a la red
         </h4>
         <input
