@@ -23,7 +23,7 @@ export default function Form({ componentStyle }: FormProps) {
       <div className={componentStyle}>
         <Image
           className="mb-3"
-          src="/../public/logo.png"
+          src="https://user-images.githubusercontent.com/90206336/246813391-71b5c14d-8625-4f3b-ac33-60701664d629.png"
           alt="QR logo"
           width={200}
           height={200}
