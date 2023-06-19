@@ -4,6 +4,7 @@ export interface InputProps {
   placeholder?: string;
   type: "text" | "number";
   componentStyle?: string;
+  value: any;
 }
 
 export interface FormProps {
@@ -11,7 +12,7 @@ export interface FormProps {
 }
 
 export interface ButtonProps {
+  work: any;
   value: string;
-  to: Url;
   componentStyle?: string;
 }

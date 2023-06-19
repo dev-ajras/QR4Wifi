@@ -2,10 +2,10 @@
 import Link from "next/link";
 import { ButtonProps } from "@/types";
 
-export function Button({ value, componentStyle, to }: ButtonProps) {
+export function Button({ value, componentStyle, work }: ButtonProps) {
   return (
-    <Link href={to} className={componentStyle}>
+    <button className={componentStyle} onClick={work}>
       {value}
-    </Link>
+    </button>
   );
 }
