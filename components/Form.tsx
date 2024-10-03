@@ -6,9 +6,8 @@ import { toDataURL } from "qrcode";
 
 export default function Form({ componentStyle }: FormProps) {
   const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [securityType, setSecurityType] = useState("");
   const [result, setResult] = useState("");
+  const [url, setUrl] = useState(""); // Cambiar el estado para la URL
 
   console.log(result);
   if (result != "") {
@@ -29,39 +28,19 @@ export default function Form({ componentStyle }: FormProps) {
           height={200}
         />
         <h4 className="w-3/4 text-center mb-3">
-          Accesible, rapido y seguro, inicia la camara de tu celu y apunta hacia
-          el QR para conectarte automaticamente a la red
-        </h4>
+            Convierte tus enlaces en QR para facil acceso.    </h4>
         <input
           onChange={(e) => {
-            setName(e.target.value);
+            setUrl(e.target.value); // Cambiar a setUrl
           }}
           type="text"
-          placeholder="Nombre: ej: Tele-123"
-          className="rounded w-3/4 mb-3"
-        />
-        <input
-          onChange={(e) => {
-            setSecurityType(e.target.value);
-          }}
-          type="text"
-          placeholder="tipo de seguridad: ej: WPA, WPA2"
-          className="rounded w-3/4 mb-3"
-        />
-        <input
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          type="text"
-          placeholder="Contraseña de la red: ej: Clavesegura123"
+          placeholder="Enlace web: ej: https://ejemplo.com"
           className="rounded w-3/4 mb-3"
         />
         <button
           onClick={async () => {
             setResult(
-              await toDataURL(
-                `WIFI:S:${name};T:${securityType};P:${password};H:false;;`
-              )
+              await toDataURL(url) // Cambiar a url
             );
           }}
           className="mt-4 bg-sky-400 text-white p-3 rounded"
