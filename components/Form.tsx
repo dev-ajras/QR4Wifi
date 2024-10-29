@@ -18,6 +18,12 @@ export default function Form({ componentStyle }: FormProps) {
       <div className="text-center">
         <Image src={result} alt="qr-generado" width={300} height={300} />
         <h3 className="mt-4 text-black text-xl">{name} Access</h3>
+        <button
+          onClick={() => setResult("")}
+          className="mt-4 bg-sky-400 text-white p-3 rounded"
+        >
+          Generar otro QR
+        </button>
       </div>
     );
   } else {
@@ -32,14 +38,14 @@ export default function Form({ componentStyle }: FormProps) {
         />
         
         <div className="flex items-center gap-4 mb-4">
-          <span className={`${!isWifiMode && 'text-gray-400'}`}>URL</span>
+          <span className={`${isWifiMode && 'text-gray-400'}`}>URL</span>
           <button
             onClick={() => setIsWifiMode(!isWifiMode)}
             className="w-16 h-8 rounded-full bg-sky-400 relative"
           >
             <div className={`w-6 h-6 bg-white rounded-full absolute top-1 transition-all ${isWifiMode ? 'right-1' : 'left-1'}`} />
           </button>
-          <span className={`${isWifiMode && 'text-gray-400'}`}>WiFi</span>
+          <span className={`${!isWifiMode && 'text-gray-400'}`}>WiFi</span>
         </div>
 
         <h4 className="w-3/4 text-center mb-3">
