@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { FormProps } from "@/types";
-import { toDataURL } from "qrcode";
+import QRCode from "qrcode";
 
 export default function Form({ componentStyle }: FormProps) {
   const [name, setName] = useState("");
@@ -80,13 +80,19 @@ export default function Form({ componentStyle }: FormProps) {
 
         <button
           onClick={async () => {
-            const qrData = await toDataURL(
-              isWifiMode
-                ? `WIFI:S:${name};T:${securityType};P:${password};H:false;;`
-                : url,
-              { type: 'image/png' }
-            );
-            setResult(qrData);
+            const qrData = await new Promise((resolve, reject) => {
+              QRCode.toString(
+                isWifiMode
+                  ? `WIFI:S:${name};T:${securityType};P:${password};H:false;;`
+                  : url,
+                { type: 'svg' },
+                (err, string) => {
+                  if (err) reject(err);
+                  resolve(`data:image/svg+xml;charset=utf-8,${encodeURIComponent(string)}`);
+                }
+              );
+            });
+            setResult(qrData as string);
           }}
           className="mt-4 bg-sky-400 text-white p-3 rounded"
         >
